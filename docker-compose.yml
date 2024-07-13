@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  front-guia:
+    build: .
+    entrypoint: sh ./.docker/entrypoint.sh
+    container_name: front-guia
+    volumes:
+      - .:/usr/home/app/front
+    working_dir: /usr/home/app/front
+    ports:
+      - 3005:3005
+    restart: always
+    tty: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
