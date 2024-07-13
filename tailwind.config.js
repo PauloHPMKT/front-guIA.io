@@ -17,7 +17,7 @@ module.exports = {
       },
       colors: {
         'background-light': '#f9f8f9',
-        'background-dark': '#1e1e1e',
+        'background-dark': customPallet.primaryDark,
         'text-light': '#000000',
         'text-dark': '#ffffff',
         'header-light': '#e5e5e5',

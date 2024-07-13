@@ -1,6 +1,16 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import FormLogin from '../components/FormLogin/index.vue';
+import FormRegister from '../components/FormRegister/index.vue';
+import { UserService } from '../services/users/user.service';
 import logo from '../assets/img/guIA.png';
+
+const loginForm = ref(true);
+
+async function handleLogin(data: any) {
+  const userService = UserService;
+  await userService.login(data);
+}
 </script>
 
 <template>
@@ -10,19 +20,27 @@ import logo from '../assets/img/guIA.png';
         <img
           :src="logo"
           alt="Logo da GuIA"
-          class="w-[250px] mx-auto"
+          class="w-[180px] mx-auto"
         />
         <figcaption>
-          <h3 class="text-gray-950 mt-4 font-semibold">Área de Login</h3>
+          <h3 v-if="loginForm" class="text-gray-950 mt-4 font-semibold">Área de Login</h3>
         </figcaption>
         <div class="flex items-center justify-center">
-          <p class="my-6 mr-1">Ainda não criou sua Workspace?</p>
-          <span class="text-blue-600 cursor-pointer hover:underline">
-            Registrar
+          <p class="my-6 mr-1">
+            {{ loginForm 
+              ? 'Ainda não criou sua Workspace?' 
+              : 'Já possui uma conta?' 
+            }}
+          </p>
+          <span
+            @click="loginForm = !loginForm"
+            class="text-blue-600 cursor-pointer hover:underline">
+            {{ loginForm ? 'Criar' : 'Faça Login' }}
           </span>
         </div>
       </figure>
-      <FormLogin />
+      <FormLogin v-if="loginForm" @login="handleLogin" />
+      <FormRegister v-else />
     </div>
   </div>
   <!-- <transition name="fade">
@@ -36,8 +54,6 @@ import logo from '../assets/img/guIA.png';
         message="Voltar para a Home" 
         @navigateAction="toHomePage" 
       />
-      <FormLogin />
-      oi
     </div>
   </transition> -->
 </template>

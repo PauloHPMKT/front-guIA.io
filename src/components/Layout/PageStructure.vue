@@ -1,21 +1,10 @@
 <script setup lang="ts">
-import { watchEffect } from 'vue';
+import { Icon } from '@iconify/vue';
 import Content from './Content.vue';
-import { useThemeStore } from '../../store/themeStore';
+import { useTheme } from '../../composables/useTheme';
 
-const themeStore = useThemeStore();
+const { toggleTheme } = useTheme();
 
-watchEffect(() => {
-  if (themeStore.theme === 'dark') {
-    document.body.classList.add('dark');
-  } else {
-    document.body.classList.remove('dark');
-  }
-});
-
-const toggleTheme = () => {
-  themeStore.toggleTheme();
-}
 </script>
 
 <template>
