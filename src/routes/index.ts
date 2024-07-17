@@ -28,6 +28,11 @@ export const router = createRouter({
           path: 'gen-description',
           name: 'description',
           component: () => import('../views/app/GenerateDescription.vue')
+        },
+        {
+          path: 'profile',
+          name: 'profile',
+          component: () => import('../views/app/ProfileSettings.vue')
         }   
       ]
     }

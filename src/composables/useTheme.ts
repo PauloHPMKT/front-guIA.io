@@ -12,11 +12,18 @@ export const useTheme = () => {
     }
   });
 
-  function toggleTheme() {
-    themeStore.toggleTheme();
+  function toggleTheme(theme: string) {
+    themeStore.toggleTheme(theme);
+  }
+
+  function getActiveTheme(theme: string) {
+    console.log(themeStore.theme, theme)
+    return themeStore.theme === theme;
   }
 
   return {
-    toggleTheme
+    toggleTheme,
+    getActiveTheme,
+    themeStore,
   }
 }
