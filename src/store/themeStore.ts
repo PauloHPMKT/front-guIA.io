@@ -4,9 +4,11 @@ export const useThemeStore = defineStore('theme', {
   state: () => ({
     theme: 'light'
   }),
+  persist: true,
   actions: {
-    toggleTheme() {
-      this.theme = this.theme === 'light' ? 'dark' : 'light'
+    toggleTheme(theme: string) {
+      this.theme = theme === 'light' ? 'dark' : 'light'
+      // this.theme = this.theme === 'light' ? 'dark' : 'light'
     }
   }
 })
