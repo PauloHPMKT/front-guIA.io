@@ -2,6 +2,7 @@
 
 const customPallet = {
   primaryDark: '#161C24',
+  secondaryDark50: '#212b36',
 }
 
 module.exports = {
@@ -14,6 +15,7 @@ module.exports = {
     extend: {
       backgroundColor: {
         'dark-blue': customPallet.primaryDark,
+        'card-dark': customPallet.secondaryDark50,
       },
       colors: {
         'background-light': '#f9f8f9',
@@ -22,6 +24,11 @@ module.exports = {
         'text-dark': '#ffffff',
         'header-light': '#e5e5e5',
         'header-dark': '#333333',
+        'card-dark': customPallet.secondaryDark50,
+      },
+      borderColor: {
+        'dark-blue': customPallet.primaryDark,
+        'border-dark': customPallet.secondaryDark50,
       },
     },
   },
